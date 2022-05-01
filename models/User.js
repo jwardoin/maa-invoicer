@@ -24,6 +24,10 @@ const UserSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    lessonCalendarId: {
+        type: String,
+        required: true
+    },
     createdAt: {
         type: Date,
         default: Date.now
