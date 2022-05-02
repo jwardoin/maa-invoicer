@@ -12,9 +12,9 @@ router.get('/google/callback', passport.authenticate('google', { failureRedirect
     res.redirect("/invoicer")
 })
 
-router.get('logout', (req,res)=>{
+router.get('/logout', (req,res)=>{
     req.logout()
     res.redirect('/')
 })
 
-moduler.exports = router
+module.exports = router

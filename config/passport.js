@@ -2,7 +2,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy
 const mongoose = require('mongoose')
 const User = require('../models/User')
 
-module.exports - function(passport) {
+module.exports = function(passport) {
     passport.use(new GoogleStrategy({
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -17,7 +17,7 @@ module.exports - function(passport) {
             image: profile.photos[0].value,
             // setting these to "empty" for user to update after authentication
             hourlyRate: 0,
-            lessonCalendarId: ""
+            lessonCalendarId: "Please Choose a Calendar"
         }
 
         try {
