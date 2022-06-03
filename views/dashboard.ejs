@@ -10,6 +10,16 @@
 <body>
    <h1>Hello, <%=name%></h1>
 
+   <section>
+       <!-- considering putting a 50% block here that shows totals for lesson counts, pay, and potentially a recommended savings for taxes -->
+   </section>
+
+   <% if (user.hourlyRate === 0 && user.lessonCalendarId === 'Please Choose a Calendar') {%>
+    <!-- Put a message to update rate & calendarId before showing create invoice path -->
+   <%} else {%>
+    <!-- Button to /newInvoice -->
+   <%}%>
+
    <!-- Here I will display all of the invoices the user has generated and a button to generate new invoices
         Invoices will appear in a block format and have basic info - user can click on them to be taken to their specific invoice page with more info-->
 

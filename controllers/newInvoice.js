@@ -14,6 +14,8 @@ module.exports = {
             const invoice = await Invoice.create({  
                 // put settings from form here
             })
+            res.json('Invoice Created')
+            res.render('/invoice', { /* figure out how to pass newly created invoice to this path - invoice._id? */ })
         } catch (err) {
             console.error(err)
         }

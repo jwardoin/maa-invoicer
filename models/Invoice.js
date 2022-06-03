@@ -29,6 +29,7 @@ const InvoiceSchema = new mongoose.Schema({
         type: Number,
         require: true
     },
+    holidays: [{Number}]
 })
 
 module.exports = mongoose.model('Invoice', InvoiceSchema)

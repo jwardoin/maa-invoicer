@@ -9,10 +9,9 @@ module.exports = {
         } 
     },
     getDashboard: async (req,res) => {
-        console.log(req.user.hourlyRate)
         const invoices = await Invoice.find({ googleId: req.user.googleId })
         try {
-            res.render('dashboard.ejs', { name: req.user.firstName, invoice: invoices }) 
+            res.render('dashboard.ejs', { user: req.user, invoice: invoices }) 
         } catch (err) {
             console.error(err)
         } 

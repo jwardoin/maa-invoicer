@@ -9,6 +9,8 @@ module.exports = function(passport) {
         callbackURL: '/auth/google/callback'
     },
     async (accessToken, refreshToken, profile, done) => {
+        // probably use the access token to call API to get Calendar IDs here - will need to switch up conditionals, so API isn't called every time a user authenticates
+
         const newUser = {
             googleId: profile.id,
             displayName: profile.displayName,
@@ -17,7 +19,9 @@ module.exports = function(passport) {
             image: profile.photos[0].value,
             // setting these to "empty" for user to update after authentication
             hourlyRate: 0,
-            lessonCalendarId: "Please Choose a Calendar"
+            lessonCalendarId: 'Please Choose a Calendar',
+            // 
+            // googleCalendarIds: 
         }
 
         try {
