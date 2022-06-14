@@ -8,20 +8,45 @@
     <title>Document</title>
 </head>
 <body>
-   <h1>Hello, <%=name%></h1>
+   <h1>Hello, <%=user.firstName%></h1>
 
    <section>
-       <!-- considering putting a 50% block here that shows totals for lesson counts, pay, and potentially a recommended savings for taxes -->
+        <section>
+            <% let totalPay = 0 %>
+            <% let totalLessons = 0 %>
+            <% invoice.forEach(invoice => {%>
+                <% totalPay += invoice.totalPay
+                totalLessons += invoice.lessons.length + 1 %>
+            <%})%>
+            <h3>Total Lessons: <%=totalLessons%></h3>
+            <h3>Total Pay: $<%=totalLessons%></h3>
+        </section>
+        <section>
+            <% if (user.hourlyRate === 0 && user.lessonCalendarId === 'Please Choose a Calendar') {%>
+                <h2>Set your rate and Calendar ID now</h2>
+                <button><a href="/accountsettings">Settings</a></button>
+               <%} else {%>
+                <button><a href="/newinvoice">Create New Invoice</a></button>
+               <%}%>
+        </section>
    </section>
 
-   <% if (user.hourlyRate === 0 && user.lessonCalendarId === 'Please Choose a Calendar') {%>
-    <!-- Put a message to update rate & calendarId before showing create invoice path -->
-   <%} else {%>
-    <!-- Button to /newInvoice -->
-   <%}%>
+   <section>
+    <!-- holds list of invoices and prints details in 25% boxes -->
+    <% invoice.forEach(invoice => {%>
+        <article data.id="<%=invoice._id%>">
+            
+        </article>
+    <%})%>
+    </section>
+   
+
+   <button><a href="/auth/logout">Log Out</a></button>
+
+   
 
    <!-- Here I will display all of the invoices the user has generated and a button to generate new invoices
-        Invoices will appear in a block format and have basic info - user can click on them to be taken to their specific invoice page with more info-->
+        Invoices will appear in a block format and have basic info - user can click on them to be taken to their specific invoice page with more info -->
 
 <script src="js/main.js"></script>
 </body>

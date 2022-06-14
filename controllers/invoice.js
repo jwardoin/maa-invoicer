@@ -9,7 +9,7 @@ module.exports = {
             console.error(err)
         }    
     },
-    deleteInvoice: (req,res) => {
+    deleteInvoice: async (req,res) => {
         try {
             await Invoice.findOneAndDelete({ /* figure out best way to delete invoice user is currently looking at */ })
             res.redirect('/dashboard')

@@ -33,10 +33,14 @@ const UserSchema = new mongoose.Schema({
         default: Date.now
     },
     // I would like to store all of the user's Google Calendar IDs in their profile, so there will be no need to call the API again later when editing settings
-    // googleCalendarIds: [{
-    //     type: String,
-    //     required: true
-    // }]
+    googleCalendarIds: [
+        [   
+            {
+            type: String,
+            required: true
+            }
+        ]
+    ]
 })
 
 module.exports = mongoose.model('User', UserSchema)

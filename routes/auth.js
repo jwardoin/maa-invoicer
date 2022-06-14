@@ -9,7 +9,7 @@ const googleEvents = 'https://www.googleapis.com/auth/calendar.events.readonly'
 router.get('/google', passport.authenticate('google', { scope: ['profile', googleCalendars, googleEvents] }))
 
 router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req,res) => {
-    res.redirect("/invoicer")
+    res.redirect("/dashboard")
 })
 
 router.get('/logout', (req,res)=>{
