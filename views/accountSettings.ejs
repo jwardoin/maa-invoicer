@@ -4,14 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Document</title>
 </head>
 <body>
-   <h1>Account Settings</h1>
+    <a href="/dashboard">Back to Dashboard</a>
 
+    <section>
+        <h1>Account Settings</h1>
+
+        <p data-settingName="firstName">First Name: <%=accountSettings.firstName%><button class="edit">edit</button></p>
+        <p data-settingName="lastName">Last Name: <%=accountSettings.lastName%><button class="edit">edit</button></p> 
+        <p data-settingName="hourlyRate">Hourly Rate: <%=accountSettings.hourlyRate%><button class="edit">edit</button></p>
+        <p data-settingName="lessonCalendarId"> Lesson Calendar: <%=accountSettings.lessonCalendarId%><button class="edit">edit</button></p> 
+        <select id="calendarSelect" class="hidden">
+                <option>---Please Choose a Calendar---</option>
+            <% accountSettings.googleCalendarIds.forEach(calendar => {%>
+                <option data-calendarId=<%=`${calendar[1]}`%>><%=`${calendar[0]} (id: ${calendar[1]})`%></option>
+            <%})%>
+        </select>
+    </section>
+
+
+    
    <!-- Here I will list the user's settings, add some frontend JS that allows the user to click to edit, and then send that to the backend to Update the DB -->
     
 <script src="js/main.js"></script>
+<script src="js/accountSettings.js"></script>
 </body>
 </html>
