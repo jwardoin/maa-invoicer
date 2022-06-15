@@ -37,11 +37,12 @@ async function editSetting(){
             keyValue = this.parentNode.dataset.settingname
             propValue = this.parentNode.childNodes[0].value
         }
-        const response = await fetch(`/accountsettings/${keyValue}`, {
-            method: 'put',
+        const response = await fetch('accountsettings/update', { // `/accountsettings/${keyValue}`
+            method: 'put', 
             headers:  {'Content-type': 'application/json'},
             body: JSON.stringify({
-                setting: propValue
+                settingName: keyValue,
+                settingValue: propValue
             })
         })
 

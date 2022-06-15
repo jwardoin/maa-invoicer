@@ -1,12 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const accountSettingsController = require('../controllers/accountSettings')
+const { ensureAuth } = require('../middleware/auth')
 
-router.get('/', accountSettingsController.getSettings)
-router.put('/firstName', accountSettingsController.changeFirstName)
-router.put('/lastName', accountSettingsController.changeLastName)
-router.put('/hourlyRate', accountSettingsController.changeRate)
-router.put('/lessonCalendarId', accountSettingsController.changeCalendarId)
+router.get('/', ensureAuth, accountSettingsController.getSettings)
+router.put('/update', accountSettingsController.changeSetting)
 router.delete('/deleteAccount', accountSettingsController.deleteAccount)
 
 module.exports = router
