@@ -16,17 +16,21 @@
             <% let totalLessons = 0 %>
             <% invoice.forEach(invoice => {%>
                 <% totalPay += invoice.totalPay
-                totalLessons += invoice.lessons.length + 1 %>
+                totalLessons += invoice.totalHours*2 %>
             <%})%>
             <h3>Total Lessons: <%=totalLessons%></h3>
-            <h3>Total Pay: $<%=totalLessons%></h3>
+            <h3>Total Pay: $<%=totalPay%></h3>
         </section>
         <section>
             <% if (user.hourlyRate === 0 && user.lessonCalendarId === 'Please Choose a Calendar') {%>
                 <h2>Set your rate and Calendar ID now</h2>
                 <button><a href="/accountsettings">Settings</a></button>
                <%} else {%>
-                <button><a href="/newinvoice">Create New Invoice</a></button>
+                <form action="/newinvoice" method="POST">
+                    <input type="date" placeholder="Pay period start" name="payPeriodStart">
+                    <input type="date" placeholder="Pay period end" name="payPeriodEnd">
+                    <input type="submit" value="Create New Invoice">
+                </form>
                <%}%>
         </section>
    </section>

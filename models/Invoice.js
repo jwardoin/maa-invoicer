@@ -21,13 +21,25 @@ const InvoiceSchema = new mongoose.Schema({
         type: Date,
         require: true
     },
-    lessons: [{
-        type: String,
-        require: true
-    }],
+    lessons: [
+        [
+            {
+            type: String,
+            require: true
+            }
+        ]
+    ],
+    totalHours: {
+        type: Number,
+        required: true
+    },
     totalPay: {
         type: Number,
         require: true
+    },
+    hourlyRate: {
+        type: Number,
+        required: true
     },
     holidays: [{Number}]
 })
