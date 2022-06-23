@@ -1,0 +1,191 @@
+.navbar {
+    height: 50px;
+    background-color: purple;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.logo{
+    font-size: 20px;
+    font-family: bold;
+}
+
+.list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.listItem {
+    margin-right: 20px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.home {
+    display: flex;
+    padding: 50px 100px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 30%;
+    padding: 10px;
+    border-radius: 20px;
+    -webkit-box-shadow: 5px 6px 11px 12px rgba(0,0,0,0.26); 
+    box-shadow: 5px 6px 11px 12px rgba(0,0,0,0.26);
+}
+
+.img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin: 20px 0px;
+}
+
+.desc {
+    color: #333;
+    margin-bottom: 20px;
+    line-height:  25px;
+}
+
+.cardButton {
+    border: none;
+    border-radius: 10px;
+    background-color: purple;
+    padding: 10px;
+    color: white;
+    font-family: bold;
+    font-weight: bold;
+}
+
+.invoice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.invoiceImg {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.postDesc {
+    padding: 0 100px;
+    font-size: 24px;
+    font-weight: 300;
+    color: gray;
+    margin-top: 50px;
+}
+
+.login {
+    height: calc(100vh - 50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper {
+    width: 60%;
+    height: 75%;
+    -webkit-box-shadow: 5px 6px 11px 12px rgba(0,0,0,0.26); 
+    box-shadow: 5px 6px 11px 12px rgba(0,0,0,0.26);
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.left,.right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.left {
+    flex: 2;
+}
+
+.right {
+    flex: 1;
+}
+
+.missionStatement {
+    font-size: 3rem;
+    margin: 0 1em;
+}
+
+.center {
+    width: .5px;
+    height: 70%;
+    background-color: lightgray;
+}
+
+.loginButton {
+    width: 150px;
+    padding: 15px 25px;
+    border-radius: 5px;
+    color: white;
+    background-color: steelblue;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.loginTitle {
+    position: absolute;
+    top: 150px;
+    color: lightgray;
+    
+}
+
+.link {
+    color: inherit;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 992px) {
+    .card {
+      width: 100%;
+      margin-bottom: 50px;
+    }
+  
+    .wrapper {
+      width: 65%;
+      height: 90%;
+      flex-direction: column;
+    }
+  
+    .loginTitle {
+      display: none;
+    }
+  
+    .center {
+      width: 100%;
+      position: relative;
+    }
+  
+    .left {
+      padding: 20px;
+    }
+  
+    .right {
+      padding: 20px;
+    }
+  
+    .line {
+      height: 0.5px;
+      width: 300px;
+    }
+  }
