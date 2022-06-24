@@ -9,15 +9,31 @@ import { useEffect, useState } from "react";
 import "./app.css"
 
 function App() {
-  const [user, setUser] = useState()
-  const [invoices, setInvoices] = useState()
+  const [user, setUser] = useState([])
+  const [invoiceList, setInvoiceList] = useState([])
   
 
   useEffect(() => {
     const getUser = async () => {
-      try {
+      const userData = await fetchUser()
+      console.log(userData)
+      setUser(userData.user)
+      
+    }
+
+    const getInvoices = async () => {
+      const fetchedInvoices = await fetchInvoices()
+      setInvoiceList(fetchedInvoices)
+    }
+
+    getUser()
+    getInvoices()
+  }, [])
+
+  const fetchUser = async () => {
+    try {
       const response = await fetch('http://localhost:8000/auth/login/success', {
-        method: "GET",
+        method: 'GET',
         credentials: "include",
         headers: {
           Accept: "application/json",
@@ -26,35 +42,29 @@ function App() {
         }
       })
         const data = await response.json()
-        setUser(data.user)
+        return data
       } catch (err) {
         console.error(err)
       }
     }
-    getUser()
-  }, [])
 
-  useEffect(() => {
-    const getInvoices = async () => {
-      try {
-        const response = await fetch('http://localhost:8000', {
-          method: 'GET',
-          credentials: "include",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Credentials": true,
-          }
-        })
-        const data = await response.json()
-        setInvoices(data.invoices)
-      } catch (err) {
-        console.error(err)
-      }
+  const fetchInvoices = async () => {
+    try {
+      const response = await fetch('http://localhost:8000', {
+        method: 'GET',
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+        }
+      })
+      const data = await response.json()
+      return data.invoices
+    } catch (err) {
+      console.error(err)
     }
-    getInvoices() 
-  })
-  console.log(invoices)
+  }
  
   return ( 
     <BrowserRouter>
@@ -62,9 +72,9 @@ function App() {
         <Navbar user={user}/>
         <Routes>
           <Route>
-            <Route path='/' element={user ? <Home invoices={invoices} /> : <Navigate to="/login" />} />
+            <Route path='/' element={user ? <Home invoices={invoiceList} /> : <Navigate to="/login" />} />
             <Route path='/login' element={user ? <Navigate to="/" /> : <Login />} />
-            <Route path='/invoice/:id' element={user ? <Invoice /> : <Navigate to="/login" />} />
+            <Route path='/invoice/:id' element={user ? <Invoice invoices={invoiceList} /> : <Navigate to="/login" />} />
             <Route path='/accountsettings/:user' element={<AccountSettings />} />
           </Route>
         </Routes>

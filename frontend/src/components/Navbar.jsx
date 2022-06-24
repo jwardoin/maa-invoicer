@@ -17,7 +17,7 @@ const Navbar = ({user}) => {
                     <li className="listItem">
                         <img src={user.image} alt="usernamehere" className="avatar" />
                     </li>
-                    <li className="listItem"><Link className="link" to="/accountsettings/">Account Settings</Link></li>
+                    <li className="listItem"><Link className="link" to={`/accountsettings/${(user.firstName+user.lastName)}`}>Account Settings</Link></li>
                     <li className="listItem" onClick={logout}>Logout</li>
                 </ul>
             ) : (<Link className="link" to="login">Login</Link>)

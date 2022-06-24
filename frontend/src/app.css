@@ -34,12 +34,12 @@
 .home {
     display: flex;
     padding: 50px 100px;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
 }
 
 .card {
-    width: 30%;
+    width: 25%;
     padding: 10px;
     border-radius: 20px;
     -webkit-box-shadow: 5px 6px 11px 12px rgba(0,0,0,0.26); 
@@ -90,11 +90,15 @@
     margin-top: 50px;
 }
 
-.login {
+.login, .accountSettings {
     height: calc(100vh - 50px);
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.accountSettings {
+    flex-direction: column-reverse;
 }
 
 .wrapper {

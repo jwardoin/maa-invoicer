@@ -1,17 +1,16 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { posts } from "../data"
 
-const Invoice = () => {
+const Invoice = ({ invoices }) => {
     const location = useLocation()
     const path = location.pathname.split('/')[2]
-    const invoice = posts.find(invoice=>invoice.id.toString() === path)
+    const invoice = invoices.find(invoice=>invoice._id.toString() === path)
     return (
         <div className="invoice">
-            <img src={invoice.img} alt="" />
+            {/* <img src={invoice.img} alt="" />
             <h1 className="invoiceTitle">{invoice.title}</h1>
             <p className="invoiceDesc">{invoice.desc}</p>
-            <p className="invoiceLongDesc">{invoice.longDesc}</p>
+            <p className="invoiceLongDesc">{invoice.longDesc}</p> */}
         </div>
     )
 }
