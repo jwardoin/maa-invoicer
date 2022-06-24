@@ -3,15 +3,16 @@ import Google from "../img/google.png"
 
 const Login = () => {
 
-    const google = () => {
-        window.open("http:/localhost:8000/auth/google")
+    const googleAuth = () => {
+        window.open("http://localhost:8000/auth/google", "_self")
     }
+
     return (
         <div className="login">
             <div className="wrapper">
                 <div className="right">
                     <h1 className="loginTitle">Login</h1>
-                    <div className="loginButton" onClick={google}>
+                    <div className="loginButton" onClick={googleAuth}>
                         <img src={Google} alt="" />
                         Google
                     </div>
