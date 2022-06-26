@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 const Navbar = ({user}) => {
 
+    const serverURI = 'http://localhost:8000/'
+
     const logout = async () => {
-        window.open('http://localhost:8000/auth/logout', '_self')
+        window.open(`${serverURI}auth/logout`, '_self')
     }
 
     return (
@@ -20,7 +21,7 @@ const Navbar = ({user}) => {
                     <li className="listItem"><Link className="link" to={`/accountsettings/${(user.firstName+user.lastName)}`}>Account Settings</Link></li>
                     <li className="listItem" onClick={logout}>Logout</li>
                 </ul>
-            ) : (<Link className="link" to="login">Login</Link>)
+            ) : (<a href={`${serverURI}auth/google`} className="link">Login</a>)
         }
         </div>
     )
