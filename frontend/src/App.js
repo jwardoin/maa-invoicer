@@ -72,10 +72,10 @@ function App() {
         <Navbar user={user}/>
         <Routes>
           <Route>
-            <Route path='/' element={user ? <Home invoices={invoiceList} /> : <Navigate to="/login" />} />
+            <Route path='/' element={user ? <Home invoices={invoiceList} user={user}/> : <Navigate to="/login" />} />
             <Route path='/login' element={user ? <Navigate to="/" /> : <Login />} />
             <Route path='/invoice/:id' element={user ? <Invoice invoices={invoiceList} /> : <Navigate to="/login" />} />
-            <Route path='/accountsettings/:user' element={<AccountSettings />} />
+            <Route path='/accountsettings/:user' element={<AccountSettings user={user}/>} />
           </Route>
         </Routes>
       </div>
