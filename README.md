@@ -10,7 +10,7 @@ This application was built to support a staff of more than 30 contract instructo
 
 To generate invoices from the user's Google Calendar, Google Calendar API integration was necessary for this application to take in event data and distill it down to a proper invoice. Using Passport.js, users authenticate with Google, whereafter their Google profile data along with a list of their calendars pulled from the Calendar API are passed to the Node.js server and then to MongoDB to create a user profile for this application. Users are then required to visit their account settings and select their payable calendar from the list as well as input their hourly rate. Once settings are accurate, users can input a date range for their pay period and hit submit; this will call the Google Calendar API, requesting all events from their selected calendar within the submitted date range, and produce an invoice that will be stored in the database and passed to the frontend for display. In the dashboard, short-form invoices will be mapped to the page, and users can interact with each invoice in several ways: clicking a 'Read More' button to view a long-form invoice, clicking the trash icon to delete, etc.
 
-## Roadmap
+## On the Roadmap:
 
 - Add an "add to clipboard" button to copy/paste invoice data
 
@@ -24,7 +24,11 @@ To generate invoices from the user's Google Calendar, Google Calendar API integr
 
 - Create a sort button for users to sort invoices by date, pay, etc.
 
-## Lessons Learned:
+- Use AWS Serverless architecture to track users of app by pinging an API when a user is created/deleted and passing the current user count from database to DynamoDB via AWS Lambda - my cloud resume will display the user count
+
+- Add ability for user to change website theme
+
+## Final Thoughts:
 
 - Authentication libraries are a godsend - I'm only just beginning to understand the high-level design of Google's authentication servers, so without a library like Passport.js, I may still be stuck on Google authentication; even more so if I needed to include authentication with multiple platforms such as Facebook, Github, etc. 
 
