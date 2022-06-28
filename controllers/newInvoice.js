@@ -23,6 +23,7 @@ module.exports = {
             const calendarId = req.user.lessonCalendarId
             const payPeriodStart = new Date('00:00:00 ' + req.body.payPeriodStart).toISOString()
             const payPeriodEnd = new Date('23:59:59 ' + req.body.payPeriodEnd).toISOString()
+            
 
             const data = await calendar.events.list({
                 'calendarId': calendarId,
@@ -38,8 +39,18 @@ module.exports = {
             // Data for new invoice
             const exclusionKeywords = ['off','makeup','break']
 
+            // Handle for Holidays
+            if(req.body.holidayStart && req.body.holidayEnd){
+                const holidayStart = Number(req.body.holidayStart.split('-')[2])
+                const holidayEnd = Number(req.body.holidayEnd.split('-')[2])
+                function holidayHander() {
+                    return Array.from(new Array(holidayEnd + 1 - holidayStart), (_, i) => holidayStart + i)
+                }
+            }
+
             function getPayableEvents() {
-                const removeNoPayEvents = data.data.items.filter(event => !exclusionKeywords.some(keyword => event.summary.toLowerCase().includes(keyword)))
+                const removeNoPayEvents = data.data.items.filter(event => !exclusionKeywords.some(keyword => event.summary.toLowerCase().includes(keyword)) && (typeof holidayHander === 'function' ? !holidayHander().some(day => Number(event.start.dateTime.split('T')[0].split('-')[2]) === day) : 1))
+                    
                 function parseTime(startTime, endTime) {
                     return (new Date(endTime).getTime() - new Date(startTime).getTime()) / 3600000
                 }
@@ -55,10 +66,9 @@ module.exports = {
 
             const newInvoice = {
                 googleId: req.user.googleId,
-                firstName: req.user.firstName,
-                lastName: req.user.lastName,
-                startDate: new Date(req.body.payPeriodStart),
-                endDate: new Date(req.body.payPeriodEnd),
+                displayName: req.user.displayName,
+                startDate: req.body.payPeriodStart,
+                endDate: req.body.payPeriodEnd,
                 lessons: eventList,
                 totalHours: totalHours,
                 totalPay: totalPay,
@@ -67,11 +77,10 @@ module.exports = {
             
 
             const invoice = await Invoice.create(newInvoice)
-            res.json('Invoice Created')
-            res.redirect('/')
+            console.log('Invoice Created')
+            res.redirect('http://localhost:3000')
         } catch (err) {
             console.error(err)
         }
-        // need to pass setting from getNewInvoice into this function - use form
     },
 }
