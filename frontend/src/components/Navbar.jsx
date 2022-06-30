@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Navbar = ({user}) => {
+const Navbar = ({ user }) => {
 
     const serverURI = 'http://localhost:8000/'
 
@@ -18,7 +18,7 @@ const Navbar = ({user}) => {
                     <li className="listItem">
                         <img src={user.image} alt="usernamehere" className="avatar" />
                     </li>
-                    <li className="listItem"><Link className="link" to={`/accountsettings/${(user.firstName+user.lastName)}`}>Account Settings</Link></li>
+                    <li className="listItem"><Link className="link" to={`/accountsettings/`}>Account Settings</Link></li>
                     <li className="listItem" onClick={logout}>Logout</li>
                 </ul>
             ) : (<a href={`${serverURI}auth/google`} className="link">Login</a>)

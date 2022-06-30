@@ -13,7 +13,7 @@ const Login = () => {
                 <div className="right">
                     <h1 className="loginTitle">Login</h1>
                     <div className="loginButton" onClick={googleAuth}>
-                        <img src={Google} alt="" />
+                        <img src={Google} alt="Google logo" />
                         Google
                     </div>
                 </div>
