@@ -5,6 +5,7 @@ const dotenv = require('dotenv')
 const session = require('express-session')
 const mongoose = require('mongoose')
 const MongoStore = require('connect-mongo')(session)
+const cors = require('cors')
 const connectDB = require('./config/db')
 
 // Path to environmental variables
@@ -35,11 +36,16 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
+app.use(cors({
+    origin: "http://localhost:3000",
+    methods: "GET,POST,PUT,DELETE,OPTIONS",
+    credentials: true,
+}))
+
 // Routes
 app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'))
 app.use('/accountsettings', require('./routes/accountSettings'))
-app.use('/newinvoice', require('./routes/newInvoice'))
 app.use('/invoice', require('./routes/invoice'))
 
 const PORT = process.env.PORT || 5000

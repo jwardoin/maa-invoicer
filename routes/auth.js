@@ -5,7 +5,6 @@ const router = express.Router()
 // Scopes assigned to variables for readability
 const googleCalendars = 'https://www.googleapis.com/auth/calendar.readonly'
 const googleEvents = 'https://www.googleapis.com/auth/calendar.events.readonly'
-const homePage = 'http://localhost:3000'
 
 router.get('/login/success', (req,res)=>{
     res.status(200).json({
