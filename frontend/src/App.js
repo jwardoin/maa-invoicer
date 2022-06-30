@@ -16,7 +16,6 @@ function App() {
   useEffect(() => {
     const getUser = async () => {
       const userData = await fetchUser()
-      console.log(userData)
       setUser(userData.user)
       
     }
@@ -65,6 +64,48 @@ function App() {
       console.error(err)
     }
   }
+
+  const createInvoice = async () => {
+    const inputs = Array.from(document.querySelectorAll('input'))
+    const response = await fetch('http://localhost:8000/invoice/newinvoice' , {
+        method: 'post', 
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+        }, 
+        body: JSON.stringify({
+            payPeriodStart: inputs[0].value,
+            payPeriodEnd: inputs[1].value,
+            holidayStart: inputs[3] ? inputs[3].value : null,
+            holidayEnd: inputs[4] ? inputs[4].value : null
+        })
+    })
+    const data = await response.json()
+    setInvoiceList([...invoiceList, data])
+    console.log(data)
+  }
+
+  const deleteInvoice = async (invoiceId) => {
+    const response = await fetch('http://localhost:8000/invoice/delete' , {
+        method: 'delete', 
+        credentials: "include",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Credentials": true,
+        },
+        body: JSON.stringify({
+            id: invoiceId
+        })
+    })
+    
+    const data = await response.json()
+    setInvoiceList(invoiceList.filter(invoice => invoice._id !== invoiceId))
+    console.log(data)
+}
+
  
   return ( 
     <BrowserRouter>
@@ -72,10 +113,10 @@ function App() {
         <Navbar user={user}/>
         <Routes>
           <Route>
-            <Route path='/' element={user ? <Home invoices={invoiceList} user={user}/> : <Navigate to="/login" />} />
+            <Route path='/' element={user ? <Home invoices={invoiceList} user={user} onAdd={createInvoice} onDelete={deleteInvoice}/> : <Navigate to="/login" />} />
             <Route path='/login' element={user ? <Navigate to="/" /> : <Login />} />
             <Route path='/invoice/:id' element={user ? <Invoice invoices={invoiceList} /> : <Navigate to="/login" />} />
-            <Route path='/accountsettings/:user' element={<AccountSettings user={user}/>} />
+            <Route path='/accountsettings/' element={<AccountSettings user={user}/>} />
           </Route>
         </Routes>
       </div>

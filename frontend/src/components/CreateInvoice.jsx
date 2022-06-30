@@ -1,7 +1,7 @@
 import React from "react"
 import { useState } from "react"
 
-const CreateInvoice = () => {
+const CreateInvoice = ({ onAdd }) => {
     const [showHolidays, setShowHolidays] = useState(false)
 
     const handleCheck = (e) => {
@@ -12,7 +12,6 @@ const CreateInvoice = () => {
         <div className="createInvoice card50">
             <h2>Create a New Invoice</h2>
             <div className="cardInfo">
-                <form action="http://localhost:8000/newinvoice" method="POST">
                     <ul className="invoiceInfoList">
                         <li>
                             <label htmlFor="payPeriodStart">Pay Period Start</label>
@@ -32,13 +31,13 @@ const CreateInvoice = () => {
                         <li>
                             <label htmlFor="holidayEnd">Holiday End</label>
                             <input type="date" name="holidayEnd"/>
-                        </li>]
-                        }                       
-                        
-                        <input type="submit" value="Submit" className="cardButton"/>
+                        </li>
+                       ]
+                    }                    
+                    
+                        <button className="cardButton" onClick={onAdd}>Submit</button>
                         
                     </ul>  
-                </form>
             </div>
         </div>
     )

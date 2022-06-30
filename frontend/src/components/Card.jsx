@@ -2,36 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const Card = ({ invoice, user }) => {
-    const [invoiceId, setInvoiceId] = useState('')
-    const [isDeleted, setIsDeleted] = useState(false)
-
-    useEffect(() => {
-        if(!invoiceId) {
-            setInvoiceId(invoice._id)
-        }
-    }, [invoice])
-
-
- 
-    const deleteInvoice = async () => {
-        const response = await fetch('http://localhost:8000/invoice/delete' , {
-            method: 'delete', 
-            credentials: "include",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Credentials": true,
-            },
-            body: JSON.stringify({
-                id: invoiceId
-            })
-        })
-        
-        const data = await response.json()
-        console.log(data)
-    }
-
+const Card = ({ invoice, user, onDelete }) => {
     return (
         <div className="card">
             <h5>{`${invoice.displayName}`}</h5>
@@ -50,7 +21,7 @@ const Card = ({ invoice, user }) => {
                 <Link className="link" to={`/invoice/${invoice._id}`}>
                     <button className="cardButton">Read More</button>
                 </Link>
-                <span className="fa fa-trash" onClick={deleteInvoice}/>
+                <span className="fa fa-trash" onClick={() => onDelete(invoice._id)}/>
             </div>
         </div>
     )
