@@ -51,7 +51,7 @@ const InputSetting = ({ setting, settingName }) => {
     }
 
     return (
-        <div className="inputSetting" >
+        <div className="container" >
             <label htmlFor={settingKey}>{settingName}</label>
             {isEditable ? [<input type="text" name={settingKey} id={settingKey} defaultValue={settingValue} key={setting} onChange={handleChange}/>, <MdCheckBox onClick={saveEdit} key="check"/>, <MdCancelPresentation onClick={endEdit} key="cancel"/>]:
             <span>{settingValue} <AiFillEdit onClick={enableEdit}/></span>} 

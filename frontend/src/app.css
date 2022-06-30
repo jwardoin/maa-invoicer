@@ -31,6 +31,11 @@ select {
     width: 37%;
     margin: 0 auto;
 }
+
+table {
+    max-width: 100%;
+}
+
 /* CLASSES */
 
 .navbar {
@@ -87,6 +92,10 @@ select {
     width: 48%;
 }
 
+.card75 {
+    max-width: 75%;
+}
+
 .img {
     width: 100%;
     height: 200px;
@@ -117,22 +126,27 @@ select {
     border-radius: 0 0 10px 10px;
 }
 
+.cardInfo > .link {
+    margin: 0 auto;
+    max-width: 27%;
+}
+
 .invoiceInfoList {
     list-style: none;
 }
 
-.login, .accountSettings {
+.login, .accountSettings, .longInvoice {
     height: calc(100vh - 50px);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.accountSettings {
+.accountSettings, .longInvoice {
     margin: 0 auto;
 }
 
-.selectSetting, .inputSetting {
+.container {
     width: 80%;
     display: flex;
     flex-flow: column wrap;
@@ -144,13 +158,13 @@ select {
     border-radius: 10px;
 }
 
-.inputSetting > input {
+.container > input {
     width: 20%;
     margin: 0 auto;
     
 }
 
-.inputSetting > label,  .selectSetting > label {
+.container > label {
     font-size: 1.3rem;
     margin: 0 auto 1%auto;
 }
@@ -165,7 +179,8 @@ select {
     border-radius: 20px;
 }
 
-.accountSettings > .wrapper {
+.accountSettings > .wrapper,
+.longInvoice {
     flex-direction: column;
 }
 
@@ -211,11 +226,11 @@ select {
 }
 
 .link {
-    margin: 0 auto;
+
     color: inherit;
-    max-width: 27;
     text-decoration: none;
 }
+
 
 @media screen and (max-width: 678px) {
     .card {

@@ -46,7 +46,7 @@ const SelectSetting = ({ calendars, calendarId }) => {
 
 
     return (
-        <div className="selectSetting">
+        <div className="container">
             <label htmlFor="calendarId">Calendar Id</label>
             {isEditable ? 
             [<select name="calendarId" id="lessonCalendarId">
