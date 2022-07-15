@@ -20,8 +20,7 @@ const Invoice = ({ invoices }) => {
 
     return (
         <div className="longInvoice">
-            <div className="wrapper">
-                <div className="container">
+            <div className="container">
                 <h1>{`${invoice.startDate} - ${invoice.endDate}`}</h1>
                 <div className="cardInfo">
                 <ul className="invoiceInfoList">
@@ -32,40 +31,32 @@ const Invoice = ({ invoices }) => {
                     {invoice.holidays.length > 0 && <li>Holiday Exclusions: {invoice.holidays}</li>}
                 </ul>
                 </div>
-            </div>
-            <div className="container">
+                <div>
                     <table>
-                        <thead>
-                            <th>
-                                Lesson Number
-                            </th>
-                            <th>
-                                Lesson Summary
-                            </th>
-                            <th>
-                                Hours
-                            </th>
-                        </thead>
-                        <tbody>
-                            <tr>
+                            <tbody>
+                                <tr>
+                                    <th>
+                                        #
+                                    </th>
+                                    <th>
+                                        Lesson Summary
+                                    </th>
+                                    <th>
+                                        Hours
+                                    </th>
+                                </tr>
+                                
                                 {invoice.lessons.map((lesson, i) => (
-                                    <td>{i + 1}</td>
-                                ))}
-                            </tr>
-                            <tr>
-                                {invoice.lessons.map((lesson) => (
+                                    <tr>
+                                        <td>{i + 1}</td>
                                         <td>{lesson[0]}</td>
+                                        <td>{lesson[1]}</td>
+                                    </tr>
                                 ))}
-                            </tr>
-                            <tr>
-                                {invoice.lessons.map((lesson) => (
-                                    <td>{lesson[1]}</td>
-                                ))}
-                            </tr>
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
                     </div>
-            </div>
+            </div>     
         </div>
     )
 }
