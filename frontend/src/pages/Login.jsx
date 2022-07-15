@@ -21,6 +21,7 @@ const Login = () => {
                 </div>
                 <div className="left">
                     <h2 className="missionStatement">Never count your lessons by hand again</h2>
+                    <p>Generating an invoice from Google Calendar has never been easier. Login now to get started and create your invoice with just a few clicks</p>
                 </div>
             </div>
         </div>

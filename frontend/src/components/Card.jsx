@@ -5,9 +5,11 @@ import { Link } from "react-router-dom";
 const Card = ({ invoice, user, onDelete }) => {
     return (
         <div className="card">
-            <h5>{`${invoice.displayName}`}</h5>
-            <img src={user.image} alt="User Profile" className="avatar" />
-            <h4 className="invoiceTitle">{`${invoice.startDate} - ${invoice.endDate}`}</h4>
+            <div className="cardTitle">
+                <h5>{`${invoice.displayName}`}</h5>
+                <img src={user.image} alt="User Profile" className="avatar" />
+                <h4 className="invoiceTitle">{`${invoice.startDate} - ${invoice.endDate}`}</h4>
+            </div>
             
             <div className="cardInfo">
                 <ul className="invoiceInfoList">

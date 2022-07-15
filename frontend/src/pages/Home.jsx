@@ -21,7 +21,7 @@ const Home = ({ invoices, user, onAdd, onDelete }) => {
                     </ul>
                 </div>
             </div>
-            <CreateInvoice onAdd={onAdd} />
+            <CreateInvoice userSetting={user.hourlyRate} onAdd={onAdd} />
         </div>
         <h2>Invoices</h2>
         <div className="invoices">

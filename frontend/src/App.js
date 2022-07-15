@@ -83,7 +83,7 @@ function App() {
         })
     })
     const data = await response.json()
-    setInvoiceList([...invoiceList, data])
+    setInvoiceList([data, ...invoiceList])
     console.log(data)
   }
 
@@ -103,7 +103,6 @@ function App() {
     
     const data = await response.json()
     setInvoiceList(invoiceList.filter(invoice => invoice._id !== invoiceId))
-    console.log(data)
 }
 
  

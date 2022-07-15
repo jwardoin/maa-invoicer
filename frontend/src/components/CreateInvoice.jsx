@@ -1,17 +1,30 @@
 import React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
-const CreateInvoice = ({ onAdd }) => {
+const CreateInvoice = ({ userSetting, onAdd }) => {
     const [showHolidays, setShowHolidays] = useState(false)
+    const [settingWarning, setSettingWarning] = useState(true)
 
     const handleCheck = (e) => {
         setShowHolidays(e.target.checked)
     }
 
+    useEffect(() => {
+        if(userSetting > 0) {
+            setSettingWarning(false)
+        } else {
+            setSettingWarning(true)
+        }
+    })
+
     return (
         <div className="createInvoice card50">
-            <h2>Create a New Invoice</h2>
+            
+                <h2>Create a New Invoice</h2>
+            
+            
             <div className="cardInfo">
+                   {settingWarning && <span style={{color: 'red'}}>Please Set Your Calendar Id and Hourly Rate in Account Settings</span>}
                     <ul className="invoiceInfoList">
                         <li>
                             <label htmlFor="payPeriodStart">Pay Period Start</label>
@@ -22,7 +35,10 @@ const CreateInvoice = ({ onAdd }) => {
                             <input type="date" name="payPeriodEnd"/>
                         </li>
                         <label className="holidayCheckLabel">Holidays</label>
-                        <input type="checkbox" className="holidayCheck" name="holiday" onClick={handleCheck}/>
+                        <li>
+                            <input type="checkbox" className="holidayCheck" name="holiday" onClick={handleCheck}/>
+                        </li>
+                        
 
                         {showHolidays && [<li>
                             <label htmlFor="holidayStart">Holiday Start</label>
@@ -38,7 +54,7 @@ const CreateInvoice = ({ onAdd }) => {
                         <button className="cardButton" onClick={onAdd}>Submit</button>
                         
                     </ul>  
-            </div>
+                </div>
         </div>
     )
 }

@@ -7,6 +7,10 @@ ul, li, form {
 
 /* ELEMENTS */
 
+* {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
 h1, h2 {
     font-size: 2rem;
     text-align: center;
@@ -27,13 +31,25 @@ svg {
     margin: 0 auto;
 }
 
+input {
+    margin: 3px 0;
+}
+
 select {
+    display: block;
     width: 37%;
     margin: 0 auto;
 }
 
 table {
     max-width: 100%;
+    margin: 0 auto;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
 }
 
 /* CLASSES */
@@ -78,6 +94,8 @@ table {
 }
 
 .card, .card50 {
+    display: flex;
+    flex-flow: column;
     color: white;
     background-color: purple;
     width: 23%;
@@ -120,10 +138,12 @@ table {
     justify-content: center;
     color: black;
     max-width: 100%;
+    height: 56%;
     padding: 2%;
     background-color: white;
     overflow: hidden;
     border-radius: 0 0 10px 10px;
+    flex: 1 1 auto;
 }
 
 .cardInfo > .link {
@@ -135,27 +155,35 @@ table {
     list-style: none;
 }
 
-.login, .accountSettings, .longInvoice {
+.login, .accountSettings {
     height: calc(100vh - 50px);
+}
+
+.login, .accountSettings, .longInvoice {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.accountSettings, .longInvoice {
+/* .accountSettings, .longInvoice{
     margin: 0 auto;
-}
+} */
+
+
 
 .container {
     width: 80%;
     display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
+    flex-flow: column;
     text-align: center;
-    height: 150px;
     margin:2% 0;
     border: 1px solid purple;
     border-radius: 10px;
+}
+
+.accountSettings .container {
+    height: 150px;
+    justify-content: center;
 }
 
 .container > input {
@@ -179,8 +207,8 @@ table {
     border-radius: 20px;
 }
 
-.accountSettings > .wrapper,
-.longInvoice {
+.accountSettings > .wrapper
+{
     flex-direction: column;
 }
 
@@ -192,6 +220,13 @@ table {
 
 .left {
     flex: 2;
+}
+
+.left > p {
+    border-top: 1px solid lightgray;
+    padding-top: 2%;
+    text-align: center;
+    max-width:  66%;
 }
 
 .right {
