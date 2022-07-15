@@ -45,7 +45,7 @@ module.exports = {
             })
 
             // Data for new invoice
-            const exclusionKeywords = ['off','makeup','break']
+            const exclusionKeywords = ['off','makeup','break', '---']
 
             // Handle for Holidays
             if(req.body.holidayStart && req.body.holidayEnd){
