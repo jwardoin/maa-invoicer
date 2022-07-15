@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { AiFillEdit } from "react-icons/ai";
-import { MdCheckBox, MdCancelPresentation } from "react-icons/md"
+import { AiFillEdit, AiFillCloseSquare } from "react-icons/ai";
+import { MdCheckBox } from "react-icons/md"
 
 const InputSetting = ({ setting, settingName }) => {
     const [isEditable, setIsEditable] = useState(false)
@@ -53,7 +53,12 @@ const InputSetting = ({ setting, settingName }) => {
     return (
         <div className="container" >
             <label htmlFor={settingKey}>{settingName}</label>
-            {isEditable ? [<input type="text" name={settingKey} id={settingKey} defaultValue={settingValue} key={setting} onChange={handleChange}/>, <MdCheckBox onClick={saveEdit} key="check"/>, <MdCancelPresentation onClick={endEdit} key="cancel"/>]:
+            {isEditable ? 
+            <div class="editSetting">
+                <input type="text" name={settingKey} id={settingKey} defaultValue={settingValue} key={setting} onChange={handleChange}/>
+                <MdCheckBox onClick={saveEdit} key="check"/>
+                <AiFillCloseSquare onClick={endEdit} key="cancel" />
+            </div> :
             <span>{settingValue} <AiFillEdit onClick={enableEdit}/></span>} 
         </div>
     )

@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useEffect } from "react"
-import { AiFillEdit } from "react-icons/ai"
+import { AiFillEdit, AiFillCloseSquare } from "react-icons/ai"
 import { MdCheckBox, MdCancelPresentation } from "react-icons/md"
 
 const SelectSetting = ({ calendars, calendarId }) => {
@@ -49,9 +49,13 @@ const SelectSetting = ({ calendars, calendarId }) => {
         <div className="container">
             <label htmlFor="calendarId">Calendar Id</label>
             {isEditable ? 
-            [<select name="calendarId" id="lessonCalendarId">
-                {calendars.map((calendar, i) => <option key={i} value={calendar[1]}>{`${calendar[0]} (Calendar Id: {${calendar[1]})`}</option>)}
-            </select>, <MdCheckBox onClick={saveEdit} /> , <MdCancelPresentation onClick={cancelEdit}/> ] 
+            <div class="editSetting">
+                <select name="calendarId" id="lessonCalendarId">
+                    {calendars.map((calendar, i) => <option key={i} value={calendar[1]}>{`${calendar[0]} (Calendar Id: {${calendar[1]})`}</option>)}
+                </select>
+                <MdCheckBox onClick={saveEdit} />  
+                <AiFillCloseSquare onClick={cancelEdit} />
+            </div>
             : 
             <span>{settingValue} <AiFillEdit onClick={enableEdit}/> </span>}
         </div>

@@ -6,6 +6,7 @@ const Card = ({ invoice, user, onDelete }) => {
     return (
         <div className="card">
             <div className="cardTitle">
+                <button className="fa fa-trash dltBtn" onClick={() => onDelete(invoice._id)}/>
                 <h5>{`${invoice.displayName}`}</h5>
                 <img src={user.image} alt="User Profile" className="avatar" />
                 <h4 className="invoiceTitle">{`${invoice.startDate} - ${invoice.endDate}`}</h4>
@@ -23,7 +24,6 @@ const Card = ({ invoice, user, onDelete }) => {
                 <Link className="link" to={`/invoice/${invoice._id}`}>
                     <button className="cardButton">Read More</button>
                 </Link>
-                <span className="fa fa-trash" onClick={() => onDelete(invoice._id)}/>
             </div>
         </div>
     )
