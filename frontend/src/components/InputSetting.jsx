@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { AiFillEdit, AiFillCloseSquare } from "react-icons/ai";
 import { MdCheckBox } from "react-icons/md"
 
-const InputSetting = ({ setting, settingName }) => {
+const InputSetting = ({ setting, settingName, onSettingChange }) => {
     const [isEditable, setIsEditable] = useState(false)
     const [inputValue, setInputValue] = useState('')
     const [settingValue, setSettingValue] = useState('')
@@ -45,6 +45,7 @@ const InputSetting = ({ setting, settingName }) => {
         })
         
         setSettingValue(inputValue)
+        onSettingChange(settingElement.id, settingElement.value)
         endEdit()
         const data = await response.json()
         console.log(data)

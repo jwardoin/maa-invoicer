@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 import { useEffect } from "react"
 import { AiFillEdit, AiFillCloseSquare } from "react-icons/ai"
-import { MdCheckBox, MdCancelPresentation } from "react-icons/md"
+import { MdCheckBox } from "react-icons/md"
 
-const SelectSetting = ({ calendars, calendarId }) => {
+const SelectSetting = ({ calendars, calendarId, onSettingChange }) => {
     const [isEditable, setIsEditable] = useState(false)
     const [settingValue, setSettingValue] = useState('')
 
@@ -39,6 +39,7 @@ const SelectSetting = ({ calendars, calendarId }) => {
         
         const data = await response.json()
         console.log(data)
+        onSettingChange(selectElement.id,selectElement.value)
         setSettingValue(selectElement.value)
         setIsEditable(false)
     }
@@ -49,7 +50,7 @@ const SelectSetting = ({ calendars, calendarId }) => {
         <div className="container">
             <label htmlFor="calendarId">Calendar Id</label>
             {isEditable ? 
-            <div class="editSetting">
+            <div className="editSetting">
                 <select name="calendarId" id="lessonCalendarId">
                     {calendars.map((calendar, i) => <option key={i} value={calendar[1]}>{`${calendar[0]} (Calendar Id: {${calendar[1]})`}</option>)}
                 </select>

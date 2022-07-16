@@ -12,7 +12,6 @@ function App() {
   const [user, setUser] = useState([])
   const [invoiceList, setInvoiceList] = useState([])
   
-
   useEffect(() => {
     const getUser = async () => {
       const userData = await fetchUser()
@@ -103,8 +102,16 @@ function App() {
     
     const data = await response.json()
     setInvoiceList(invoiceList.filter(invoice => invoice._id !== invoiceId))
-}
+  }
 
+  const changeSetting = (settingName, settingValue) => {
+    setUser(current => {
+      return {
+        ...current,
+        [settingName]: settingValue
+      }
+    })
+  }
  
   return ( 
     <BrowserRouter>
@@ -115,7 +122,7 @@ function App() {
             <Route path='/' element={user ? <Home invoices={invoiceList} user={user} onAdd={createInvoice} onDelete={deleteInvoice}/> : <Navigate to="/login" />} />
             <Route path='/login' element={user ? <Navigate to="/" /> : <Login />} />
             <Route path='/invoice/:id' element={user ? <Invoice invoices={invoiceList} /> : <Navigate to="/login" />} />
-            <Route path='/accountsettings/' element={<AccountSettings user={user}/>} />
+            <Route path='/accountsettings/' element={<AccountSettings user={user} onSettingChange={changeSetting} />} />
           </Route>
         </Routes>
       </div>
