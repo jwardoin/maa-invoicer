@@ -1,15 +1,25 @@
-import React from "react";
+import React from "react"
 import Card from "../components/Card"
-import CreateInvoice from "../components/CreateInvoice";
+import CreateInvoice from "../components/CreateInvoice"
+import { useEffect, useState } from "react";
 
 
-const Home = ({ invoices, user, onAdd, onDelete }) => { 
+const Home = ({ invoices, user, onAdd, onDelete }) => {
+    const [loading, setLoading] = useState(true) 
     const overallPay = invoices.reduce((acc, invoice) => acc + invoice.totalPay, 0).toFixed(2)
     const overallLessons = invoices.reduce((acc, invoice) => acc + invoice.lessons.length, 0)
+
+    useEffect(() =>{
+        if(invoices.length > 0){
+            setLoading(false)
+        }
+    }, [user, invoices])
+
     return (
-    <div className="home">
+        <div className="home">
         <h1 className="pageTitle">Dashboard</h1>
-        <div className="invoices">
+        {!loading &&
+        [<div className="invoices">
             <div className="invoicesSummary card50">
                 <h2>Invoicing Summary</h2>
                 <div className="cardInfo">
@@ -22,13 +32,13 @@ const Home = ({ invoices, user, onAdd, onDelete }) => {
                 </div>
             </div>
             <CreateInvoice userSetting={user.hourlyRate} onAdd={onAdd} />
-        </div>
-        <h2>Invoices</h2>
+        </div>,
+        <h2>Invoices</h2>,
         <div className="invoices">
             {invoices.map(i=>(
                 <Card key={i._id} invoice={i} user={user} onDelete={onDelete} />
             ))}
-        </div>
+        </div>]}
     </div>
     )
 }
