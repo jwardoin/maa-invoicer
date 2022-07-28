@@ -14,12 +14,12 @@ const Navbar = ({ user }) => {
             <span className="logo"><Link className="link" to='/'>MAA Invoicer</Link></span>
             { user ? (
                 <ul className="list">
-                    <li className="listItem">{user.displayName}</li>
-                    <li className="listItem">
-                        <img src={user.image} alt="usernamehere" className="avatar" />
+                    <li className="displayName">{user.displayName}</li>
+                    <li>
+                        <img src={user.image} alt={user.displayName} className="avatar" />
                     </li>
-                    <li className="listItem"><Link className="link" to={`/accountsettings/`}>Account Settings</Link></li>
-                    <li className="listItem" onClick={logout}>Logout</li>
+                    <li><Link className="link" to={`/accountsettings/`}>Account Settings</Link></li>
+                    <li onClick={logout}>Logout</li>
                 </ul>
             ) : (<a href={`${serverURI}auth/google`} className="link">Login</a>)
         }

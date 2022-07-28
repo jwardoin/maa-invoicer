@@ -15,7 +15,7 @@ const CreateInvoice = ({ userSetting, onAdd }) => {
         } else {
             setSettingWarning(true)
         }
-    })
+    }, [userSetting])
 
     return (
         <div className="createInvoice card50">
