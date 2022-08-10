@@ -1,9 +1,20 @@
-const express = require('express')
-const router = express.Router()
-const accountSettingsController = require('../controllers/accountSettings')
-const { ensureAuth } = require('../middleware/auth')
+const express = require('express');
+const router = express.Router();
+const accountSettingsController = require('../controllers/accountSettings');
+const { ensureAuth } = require('../middleware/auth');
 
-router.put('/update', accountSettingsController.changeSetting)
-router.delete('/deleteaccount', accountSettingsController.deleteAccount)
+// @route   PUT accountsettings/posts
+// @desc    Update setting
+// @access  Private
+router.put('/update', ensureAuth, accountSettingsController.changeSetting);
 
-module.exports = router
+// @route   DELETE accountsettings/deleteaccount
+// @desc    Delete user and all associated invoices
+// @access  Private
+router.delete(
+  '/deleteaccount',
+  ensureAuth,
+  accountSettingsController.deleteAccount
+);
+
+module.exports = router;
