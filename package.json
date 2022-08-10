@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node server",
-    "dev": "cross-env NODE_ENV=development nodemon server"
+    "server": "cross-env NODE_ENV=development nodemon server",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "",
   "license": "ISC",
@@ -26,6 +28,7 @@
     "passport-google-oauth20": "^2.0.0"
   },
   "devDependencies": {
+    "concurrently": "^7.3.0",
     "cross-env": "^7.0.3",
     "nodemon": "^2.0.16"
   }
