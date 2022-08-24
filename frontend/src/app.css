@@ -33,6 +33,8 @@ h4, h5 {
     color: lightgray;
 }
 
+
+
 span {
     padding: 0 2% 0 2%;
     overflow: hidden;
@@ -183,8 +185,6 @@ td, th {
     margin-bottom: 2%;
 }
 
-
-
 .login, .accountSettings, .longInvoice {
     display: flex;
     align-items: center;
@@ -269,6 +269,10 @@ td, th {
     background-color: lightgray;
 }
 
+.login > .wrapper {
+    height: 600px;
+}
+
 .loginButton {
     width: 150px;
     padding: 15px 25px;
@@ -286,7 +290,6 @@ td, th {
 }
 
 .link {
-
     color: inherit;
     text-decoration: none;
 }
@@ -303,19 +306,31 @@ td, th {
     .wrapper {
         flex-direction: column;
     }
+
+    .login > .wrapper {
+        height: auto;
+        padding: 10px;
+    }
+
     .card {
       width: 100%;
-      margin-bottom: 50px;
+      margin-bottom: 25px;
     }
-    /* button {
-        width: 50%;
-        max-height: 50px;
-    } */
+
+    .card, .card50 {
+        box-shadow: 9px 7px 24px 0px rgba(0,0,0,0.25);
+        -webkit-box-shadow: 9px 7px 24px 0px rgba(0,0,0,0.25);
+        -moz-box-shadow: 9px 7px 24px 0px rgba(0,0,0,0.25);
+    }
+
     .left,.right{
         width: 100%;
     }
     h1, h2, h3 {
-        font-size: 1.2rem;
+        font-size: .9rem;
+    }
+    li {
+        font-size: .9em;
     }
     .missionStatement {
         font-size: 2rem;
@@ -324,9 +339,9 @@ td, th {
         order: 1;
         padding-bottom: 5%;
     }
-    /* .list {
-        width: 25%;
-    } */
+    .loginTitle {
+        display: none;
+    }
     .displayName {
         display: none;
     }
@@ -334,7 +349,7 @@ td, th {
     
 }
 
-@media (min-width: 679px) and (max-width: 978px) {
+@media (min-width: 678px) and (max-width: 978px) {
    
     .card {
         width: 48%;
@@ -345,12 +360,17 @@ td, th {
         width: 65%;
         height: 90%;
         flex-direction: column;
+        justify-content: space-evenly;
       }
+
+      .login > .wrapper {
+        height: 450px;
+        padding: 10px;
+    }
     
       .missionStatement {
         font-size: 2rem;
         margin-top: 0%;
-        
       }
 
       .center {
@@ -359,11 +379,14 @@ td, th {
       }
     
       .left {
-        padding: 20px;
-      }
-    
-      .right {
-        padding: 20px;
+        height: auto;
         order: -1;
       }
+      .left,.right {
+        flex: 0 1 auto;
+      }
+
+      .loginTitle {
+        display: none;
+    }
 }

@@ -20,7 +20,7 @@ const CreateInvoice = ({ userSetting, onAdd }) => {
     return (
         <div className="createInvoice card50">
             
-                <h2>Create a New Invoice</h2>
+                <h2>New Invoice</h2>
             
             
             <div className="cardInfo">
