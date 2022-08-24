@@ -1,43 +1,43 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const InvoiceSchema = new mongoose.Schema({
-    googleId: {
+  googleId: {
+    type: String,
+    require: true,
+  },
+  displayName: {
+    type: String,
+    require: true,
+  },
+  startDate: {
+    type: String,
+    require: true,
+  },
+  endDate: {
+    type: String,
+    require: true,
+  },
+  lessons: [
+    [
+      {
         type: String,
-        require: true
-    },
-    displayName: {
-        type: String,
-        require: true
-    },
-    startDate: {
-        type: String,
-        require: true
-    },
-    endDate: {
-        type: String,
-        require: true
-    },
-    lessons: [
-        [
-            {
-            type: String,
-            require: true
-            }
-        ]
+        require: true,
+      },
     ],
-    totalHours: {
-        type: Number,
-        required: true
-    },
-    totalPay: {
-        type: Number,
-        require: true
-    },
-    hourlyRate: {
-        type: Number,
-        required: true
-    },
-    holidays: [{Number}]
-})
+  ],
+  totalHours: {
+    type: Number,
+    required: true,
+  },
+  totalPay: {
+    type: Number,
+    require: true,
+  },
+  hourlyRate: {
+    type: Number,
+    required: true,
+  },
+  holidays: [{ Number }],
+});
 
-module.exports = mongoose.model('Invoice', InvoiceSchema)
+module.exports = mongoose.model('Invoice', InvoiceSchema);
