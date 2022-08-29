@@ -2,7 +2,8 @@
 
 This application was built to support a staff of more than 30 contract instructors in creating invoices. Before, instructors needed to hand count each payable event on their Google calendar. Using this app, instructors have been able to save time and avoid human error when completing and submitting their bimonthly invoices.
 
-**Link to project:** Coming Soon...
+![MAA Dashboard](https://lh3.googleusercontent.com/ZeHu2yOiFgBl_NaY8NOQhGHTzk94dkvRjwb3FSu_rmjJ97EDyneH6HDD6m0zasbUnw9If0KnqSzkZiA1EpYeOOiveYM7Cxr1oLhSK7HXnqSZNYi6BFqvPQ2AVg61S33hum8G88w4eQxvzEmE5ffAHfK6Rb30BNdDQ3irKu1DBB0tH1RpSDCtCVJCi4-UwWIKbhyEPKUVdhM3zHTKHRT6PzfIYK9KcCXaYn6WQqaOk8gJfs-AMVc_bqAx8JJ-BORXv71E3UIe9TPy2rLr4z1kHFGZCYiXNF5gKqcE-bOdlWBuZuRDjzYTwx7afaHGwkicLSdsTqIE5E3NypS4kHhkThuhTyLKCH4MUHu2cJtzJdrrTsw5P7ZYHhdjDAYCS7CrVbvPp73jVPV27WKeXtzFexDu-7kuIMbuJthSH_fNOUXl1PAsk_zg9uSeIOAMo6LLdePxGWuBmjCO3KnLdrYduEY-ei0Va0iBK74aqMIJPSfAnaqjDwOLt6AuQNVoHbu3c0a5_7QPdajmLP-5wp0PRIlANI2wWn3U-JHc5BFk-em6fYHMzRXhVufLIaqIeXJAN5m8jQWqwiVQVe70pe64yUX7HNmJ9YPN6e_JsBLsw1och-maN2Ldr_vvalS-ykUP6ons5KeaJLqvk1LHDUCRrRgl3AmXRQAnwq6DliODYGXR6eNesNZZVyZbaDJQgQmmtcQYBb6PW5DLZUqxYBYFLJHQnRcatGAoBMneQQyQKskFl7In_XNezQtkRuGJ5j62taz2fPgdjBfjCBS64jLzAMv4d4bZivMklrgNuArKZEKiXenKK5t14hNfxkdRmj2xkVyElA=w1899-h937-no?authuser=0)
+A repository filled with codewars challenges I have completed.
 
 ## How It's Made:
 
@@ -30,14 +31,14 @@ To generate invoices from the user's Google Calendar, Google Calendar API integr
 
 ## Final Thoughts:
 
-- Authentication libraries are a godsend - I'm only just beginning to understand the high-level design of Google's authentication servers, so without a library like Passport.js, I may still be stuck on Google authentication; even more so if I needed to include authentication with multiple platforms such as Facebook, Github, etc. 
+- Authentication libraries are a godsend - I'm only just beginning to understand the high-level design of Google's authentication servers, so without a library like Passport.js, I may still be stuck on Google authentication; even more so if I needed to include authentication with multiple platforms such as Facebook, Github, etc.
 
 - Storing access tokens at the time of authentication to be used for calling the Google API later in the app was one of my first major roadblocks. I learned that sometimes we need to let concepts digest before enacting a suitable solution. Once I realized I couldn't just store the access tokens in a variable but instead needed to persist the token somewhere the server could retrieve it, I was off to the races; it did however take some time for me to have that realization.
 
 - React is such a powerful tool for building user interfaces - implementing a design with excellent usability was a weak point for me when using vanilla HTML and CSS, but with React, I feel like I leveled up greatly in that aspect. This was the first project I completed with React and greatly look forward to using it on the next one!
 
-
 ## Examples:
+
 Take a look at these other examples that I have in my own portfolio:
 
 **Cloud Resume:** https://github.com/jwardoin/cloud-resume
